@@ -1,0 +1,8 @@
+
+.input{
+    transition: .5s ease all;
+}
+
+.input::placeholder{
+    color: #5B6F82;
+}
