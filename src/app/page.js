@@ -1,7 +1,16 @@
-
+"use client";
 import styles from "../../public/css/home.module.css";
+import { useEffect } from "react";
+
+import { useNotFoundPageStatusContext } from "@/hooks/context/notFoundPageStatus";
 
 export default function Home() {
+  const { status, setStatus } = useNotFoundPageStatusContext();
+
+  useEffect(() => {
+    setStatus(1);
+    console.log(status);
+  }, [status, setStatus]);
   return (
     <main
       className={`${styles.content_main}  min-h-screen  w-full 2xl:px-48 lg:px-32 md:px-12 px-5`}

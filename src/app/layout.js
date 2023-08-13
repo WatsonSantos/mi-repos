@@ -1,25 +1,26 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
+import "./globals.css";
+import { Inter } from "next/font/google";
 
-import Navbar from '@/components/layout/Navbar/Navbar'
-import Footer from '@/components/layout/Footer/Footer'
+import { NotFoundPageStatusProvider } from "@/hooks/context/notFoundPageStatus";
 
-const inter = Inter({ subsets: ['latin'] })
+import Navbar from "@/components/layout/Navbar/Navbar";
+import Footer from "@/components/layout/Footer/Footer";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'CRIOLO',
-  description: 'Dicionário de Crio Foro para Português',
-}
+  title: "PS - Dicionário",
+  description: "Dicionário de Criolo Foro para Português",
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="pt">
-      
       <body className={inter.className}>
-        <Navbar/>
-        {children}
-        <Footer/>
-        </body>
+        <Navbar />
+        <NotFoundPageStatusProvider>{children}</NotFoundPageStatusProvider>
+        <Footer />
+      </body>
     </html>
-  )
+  );
 }

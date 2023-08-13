@@ -1,0 +1,32 @@
+
+
+.section{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+ .number{
+    font-size: 12rem;
+    font-weight: bold;
+   
+}
+
+.number:nth-child(1){
+    color: #fdcd01;
+}
+.number:nth-child(2){
+    color: #0fac29;
+ 
+}
+.number:nth-child(3){
+    color: #ce1127;
+}
+
+.btnbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}

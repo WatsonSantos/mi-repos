@@ -5,10 +5,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .loading div{
-    border: 5px solid #111;
+    border: 5px solid #0fac29;
     border-top-color: transparent;
     height: 55px;
     width: 55px;
