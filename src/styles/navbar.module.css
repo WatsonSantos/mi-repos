@@ -1,0 +1,19 @@
+
+
+
+.active{
+    color: #000000;
+    transition: .3s ease all;
+}
+
+.active:hover{
+    color: #fdcf01de;
+}
+
+@media (max-width: 767px) {
+    .active{
+        padding: 12px 0px;
+        width: auto;
+        color: #109a27 !important;
+    }
+ }

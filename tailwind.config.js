@@ -13,21 +13,22 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        custom_yellow: "#ebc009",
+        custom_yellow: "#fdcf01de",
         yellow_hover: "#fdcd01",
-        custom_green: "#109a27",
-        green_hover: "#0fac29",
+        custom_green: "#0fac29",
+        green_hover: "#109a27",
         custom_red: "#b51527",
         custom_red_hover: "#ce1127",
       },
-      backgroundColor:{
-        custom_yellow: "#ebc009",
+      backgroundColor: {
+        custom_yellow: "#fdcf01de",
         yellow_hover: "#fdcd01",
         custom_green: "#109a27",
         green_hover: "#0fac29",
         custom_red: "#b51527",
         custom_red_hover: "#ce1127",
-      }
+        custom_yellow_transparent:""
+      },
     },
   },
   plugins: [],
