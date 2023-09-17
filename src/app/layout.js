@@ -1,5 +1,7 @@
 //import { Header } from "next/dist/lib/load-custom-routes";
 
+import navLinks from "@/hooks/navLinks/navLinks";
+
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -19,7 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt">
       <body className={inter.className}>
-        <Navbar />
+        <Navbar navLinks={navLinks} />
         <NotFoundPageStatusProvider>{children}</NotFoundPageStatusProvider>
         <Footer />
       </body>

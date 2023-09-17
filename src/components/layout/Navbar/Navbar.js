@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter, usePathname } from "next/navigation";
 import styles from "../../../styles/navbar.module.css";
 
 //import "../../../../public/css/nav.module.css"
@@ -12,19 +12,21 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 //bg-gray-800
 
-export default function Navbar() {
+export default function Navbar({ navLinks }) {
   const { status, setStatus } = useNotFoundPageStatusContext();
   const [activeNav, setActiveNav] = useState("inicio");
 
   const [navbar, setNavbar] = useState(false);
 
+  const router = useRouter();
+  const pathname = usePathname();
   function activeNavLink(link) {
     setActiveNav(link);
   }
 
   return (
     <>
-      <nav className="w-full fixed top-0 navbar">
+      <nav className="w-full fixed top-0 navbar ">
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8 py-8 lg:py-14">
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -83,64 +85,27 @@ export default function Navbar() {
               }`}
             >
               <ul className="items-center justify-center space-y-1 md:flex md:space-x-8 lg:space-x-12 md:space-y-0 bg-yellow-400 p-10 md:p-0 md:bg-transparent md:text-sm lg:text-base">
-                <li
-                  onClick={() => activeNavLink("inicio")}
-                  className={
-                    activeNav === "inicio"
-                      ? styles.active
-                      : `transition ease-in-out duration-300 nav_li flex justify-start items-center text-zinc-700  hover:text-custom_yellow`
-                  }
-                >
-                  <Link href="/" className="ml-4 nav_li-link">
-                    Início
-                  </Link>
-                </li>
-                <li
-                  onClick={() => activeNavLink("dicionario")}
-                  className={
-                    activeNav === "dicionario"
-                      ? styles.active
-                      : `transition ease-in-out duration-300 nav_li flex justify-start items-center text-zinc-700  hover:text-custom_yellow`
-                  }
-                >
-                  <Link href="/dicionario" className="ml-4 nav_li-link">
-                    Dicionário
-                  </Link>
-                </li>
-                <li
-                  onClick={() => activeNavLink("abreviaturas")}
-                  className={
-                    activeNav === "abreviaturas"
-                      ? styles.active
-                      : "transition ease-in-out duration-300 nav_li flex justify-start items-center text-zinc-700  hover:text-custom_yellow"
-                  }
-                >
-                  <Link href="/abreviaturas" className="ml-4 nav_li-link">
-                    Abreviaturas
-                  </Link>
-                </li>
-                <li
-                  onClick={() => activeNavLink("sobre")}
-                  className={
-                    activeNav === "sobre"
-                      ? styles.active
-                      : "transition ease-in-out duration-300 nav_li flex justify-start items-center text-zinc-700  hover:text-custom_yellow"
-                  }
-                >
-                  <Link href="" className="ml-4 nav_li-link">
-                    Sobre
-                  </Link>
-                </li>
-                <li 
-                onClick={() => activeNavLink("contacto")}
-                className={
-                  activeNav === "contacto"
-                    ? styles.active
-                    :"transition ease-in-out duration-300 nav_li flex justify-start items-center text-zinc-700  hover:text-custom_yellow"}>
-                  <Link href="#" className="ml-4 nav_li-link">
-                    Contacto
-                  </Link>
-                </li>
+                {navLinks.map((link) => {
+                  const isActive = pathname.endsWith(link.href);
+                  return (
+                    <li
+                      key={link.name}
+                      className={
+                        isActive
+                          ? "text-green_hover md:text-yellow_hover"
+                          : "transition ease-in-out duration-300 nav_li flex justify-start items-center text-zinc-700  hover:text-green_hover md:hover:text-custom_yellow "
+                      }
+                    >
+                      <button
+                        className="ml-4 nav_li-link"
+                        type="button"
+                        onClick={() => router.push(link.href)}
+                      >
+                        {link.name}
+                      </button>
+                    </li>
+                  );
+                })}
                 <li className="transition ease-in-out duration-300 p-2 px-4 rounded-md cursor-pointer nav_li flex justify-start items-center text-white bg-custom_yellow  lg:hover:bg-yellow_hover">
                   <Link href="#">Newsletter</Link>
                 </li>

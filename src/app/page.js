@@ -17,40 +17,25 @@ export default function Home() {
     setSearch(e.target.value);
   }
 
-/*
-  fetch("http://localhost:8000/words").then(async (resp) => {
-    await resp.json().then((res) => {
-      setWords(res.words);
+  async function getWords() {
+    fetch("http://localhost:8000/words").then(async (resp) => {
+      await resp.json().then((res) => {
+        setWords(res.words);
+      });
     });
-  });
-
+  }
   // word.name.startsWith - Pega só a palavra completa
   const filtredWords = useMemo(() => {
     const lowerSearch = search.toLowerCase();
     return words.filter((word) =>
       word.name.toLowerCase().includes(lowerSearch)
-    ); //Pega também partesda palavra
+    ); //Pega também partes da palavra
   }, [search, words]);
 
-  /*
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const apiURl = "http://localhost:8000/abbreviations";
-  const { data, error, isLoanding } = useSWR(apiURl, fetcher)
+  useEffect(() => {
+    getWords();
+  }, []);
 
-  if (isLoanding) {
-    return <p>Loading!.....</p>;
-  }
-  if (data) {
-    const filtredWords = data.abbreviations.filter((word) =>
-      word.name.startsWith(search)
-    );
-    console.log(filtredWords);
-  }*/
-
-  /* useEffect(() => {
-    setStatus(1);
-    console.log(status);
-  }, [status, setStatus]);*/
   return (
     <main
       className={`${styles.content_main} min-h-screen  w-full 2xl:px-48 lg:px-32  md:px-12 px-5`}
