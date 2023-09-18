@@ -1,111 +1,86 @@
 "use client";
-import { Square } from "@/components/Square/Squares";
-//import useSWR from "swr";
-import styles from "../../public/css/home.module.css";
-import { useEffect, useState, useMemo } from "react";
-
-import { useNotFoundPageStatusContext } from "@/hooks/context/notFoundPageStatus";
+import Error from "@/components/Alert/Error";
+import Loading from "@/app/loading";
+import { useState } from "react";
+import { AiFillGithub } from "react-icons/ai";
+import Link from "next/link";
 
 export default function Home() {
-  const { status, setStatus } = useNotFoundPageStatusContext();
-  //const [searchWordsview, setSearchWordsView] = useState(false);
-  const [words, setWords] = useState([]);
-  //const [newWords, setNewWords] = useState([]);
-  const [search, setSearch] = useState("");
+  //benildebonfim
+  const [erroMessage, setErrorMessage] = useState("");
+  const [user, setUser] = useState("");
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  function handleChange(e) {
-    setSearch(e.target.value);
+  function clearMessage() {
+    let interval = setTimeout(() => {
+      setErrorMessage("");
+      console.log("ijiiji");
+    }, 5000);
   }
 
-  async function getWords() {
-    fetch("http://localhost:8000/words").then(async (resp) => {
-      await resp.json().then((res) => {
-        setWords(res.words);
-      });
-    });
+  async function getRepo(username) {
+    if (user === "") {
+      setErrorMessage("Insira um nome de utilizador!");
+      clearMessage();
+      return false;
+    }
+    setIsLoading(true);
+    await fetch(`https://api.github.com/users/${username}/repos`).then(
+      async (data) => {
+        await data.json().then((res) => {
+          if (res.length === 0) {
+            setErrorMessage("Insira um nome de utilizador!");
+            setIsLoading(false);
+          } else {
+            setData(res);
+            setIsLoading(false);
+          }
+        });
+      }
+    );
   }
-  // word.name.startsWith - Pega só a palavra completa
-  const filtredWords = useMemo(() => {
-    const lowerSearch = search.toLowerCase();
-    return words.filter((word) =>
-      word.name.toLowerCase().includes(lowerSearch)
-    ); //Pega também partes da palavra
-  }, [search, words]);
-
-  useEffect(() => {
-    getWords();
-  }, []);
 
   return (
-    <main
-      className={`${styles.content_main} min-h-screen  w-full 2xl:px-48 lg:px-32  md:px-12 px-5`}
-    >
-      <Square />
-      <form method="#" action="#" className="form-control w-full mt-48">
-        <input
-          value={search || ""}
-          onChange={handleChange}
-          className={`${styles.input} shadow-xl w-full rounded-lg h-14 border border-x-zinc-300 focus:border-yellow-400 outline-none px-10`}
-          type="text"
-          placeholder="Pesquise por palavras"
-        />
-      </form>
-      <h3 className="text-zinc-800 font-bold text-lg mt-8 w-full">
-        Mais pesquisadas recentemente
-      </h3>
-      <div className="h-0.5 bg-[#ebc009] mt-2 w-32"></div>
-      <div className="recent-words mt-3 flex flex-row justify-center items-center overflow-hidden">
-        <div className="text-black fixed lg:left-[136px] md:left-[55px] hidden md:block recent-words-btn recent-words-btn-left">
-          {"<"}
-        </div>
-        <div className="text-black fixed lg:right-[136px] md:right-[55px] hidden md:block recent-words-btn recent-words-btn-ight">
-          {">"}
-        </div>
-        <div className="cerent-word text-custom_yellow transition ease-in-out duration-300 hover:shadow bg-[#ebc2093a] p-1 px-6 mr-4 cursor-pointer">
-          Buda
-        </div>
-        <div className="cerent-word text-custom_yellow transition ease-in-out duration-300 hover:shadow bg-[#ebc2093a] p-1 px-6 mr-4 cursor-pointer">
-          Buda
-        </div>
-        <div className="cerent-word text-custom_yellow transition ease-in-out duration-300 hover:shadow bg-[#ebc2093a] p-1 px-6 mr-4 cursor-pointer">
-          Buda
-        </div>
-        <div className="cerent-word text-custom_yellow transition ease-in-out duration-300 hover:shadow bg-[#ebc2093a] p-1 px-6 mr-4 cursor-pointer">
-          Buda
-        </div>
-        <div className="cerent-word text-custom_yellow transition ease-in-out duration-300 hover:shadow bg-[#ebc2093a] p-1 px-6 mr-4 cursor-pointer">
-          Buda
-        </div>
-        <div className="cerent-word text-custom_yellow transition ease-in-out duration-300 hover:shadow bg-[#ebc2093a] p-1 px-6 mr-4 cursor-pointer">
-          Buda
-        </div>
-        <div className="cerent-word text-custom_yellow transition ease-in-out duration-300 hover:shadow bg-[#ebc2093a] p-1 px-6 mr-4 cursor-pointer">
-          Buda
-        </div>
-        <div className="cerent-word text-custom_yellow transition ease-in-out duration-300 hover:shadow bg-[#ebc2093a] p-1 px-6 mr-4 cursor-pointer">
-          Buda
-        </div>
-        <div className="cerent-word text-custom_yellow transition ease-in-out duration-300 hover:shadow bg-[#ebc2093a] p-1 px-6 mr-4 cursor-pointer">
-          Buda
-        </div>
-        <div className="cerent-word text-custom_yellow transition ease-in-out duration-300 hover:shadow bg-[#ebc2093a] p-1 px-6 mr-4 cursor-pointer">
-          Buda
-        </div>
-      </div>
-      <div className="relative w-full flex justify-center items-center">
-        {search !== "" && filtredWords.length !== 0 && (
-          <ul className="relative shadow-xl overflow-y-scroll min-h-16 max-h-40  left-auto w-[100%] md:w-[80%] pt-2 bg-white lg:bottom-[106px] md:bottom-[106px] bottom-[107px] px-2 scroll-m-9 pb-3">
-            {filtredWords.map((d) => (
-              <li
-                className="flex justify-start items-center mt-2 px-4 text-zinc-700 hover:w-full h-10 hover:text-custom_yellow cursor-pointer hover:bg-[#fdcf0111]"
-                key={d.id}
-              >
-                {d.name}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+    <main className="flex flex-col items-center justify-center h-screen w-full bg-gradient-to-r from-indigo-300 to-fuchsia-200 sm:pt-20">
+      <Link href="#" className="absolute top-8 right-8">
+        <AiFillGithub className="text-xl"/>
+      </Link>
+      {erroMessage && <Error text={erroMessage} />}
+      {isLoading === true ? (
+        <Loading />
+      ) : (
+        <>
+          {data.length > 0 ? (
+            <ul>
+              {data.map((repo) => {
+                return <li key={repo.id}>{repo.name}</li>;
+              })}
+            </ul>
+          ) : (
+            <>
+              <h1 className=" text-3xl mb-12 sm:mb-0 sm:mt-18 text-[#1ED950]">
+                𝓜𝓲 𝓡𝓮𝓹𝓸𝓼
+              </h1>
+              <div className="flex flex-col  items-center justify-center md:flex-row w-full p-4 sm:p-32">
+                <input
+                  value={user || ""}
+                  onChange={(event) => setUser(event.target.value)}
+                  type="text"
+                  placeholder="Insira o utilizador do GitHub"
+                  className="p-3 w-full md:w-96 mb-4 md:mb-0 md:mr-3 outline-none border-[1px] border-indigo-700 focus:drop-shadow-md text-zinc-700 rounded-sm transition-all focus:placeholder:bottom-8 focus:placeholder:text-xs"
+                />
+                <button
+                  className="py-3 md:px-8 w-full md:w-auto outline-none bg-indigo-700 hover:bg-indigo-600 transition-all text-white rounded-sm"
+                  onClick={() => getRepo(user)}
+                >
+                  Procurar
+                </button>
+              </div>
+            </>
+          )}
+        </>
+      )}
     </main>
   );
 }

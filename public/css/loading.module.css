@@ -9,7 +9,10 @@
 }
 
 .loading div{
-    border: 5px solid #fdcd01;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #fff;
     border-top-color: transparent;
     height: 55px;
     width: 55px;
@@ -17,9 +20,30 @@
     animation: loading 1s linear infinite;
 }
 
+.loading div div{
+    border: 5px solid #fefefe;
+    border-top-color: transparent;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    animation: secondLoading 1s linear infinite;
+}
+
 @keyframes loading{
     0%{
         transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes scondLoading{
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
     }
     100%{
         transform: rotate(360deg);
