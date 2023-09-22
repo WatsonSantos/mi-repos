@@ -45,7 +45,11 @@ export default function Repositories({ params }) {
     <>
       <ToastContainer />
       <main className="flex flex-col items-center justify-center min-h-screen w-full  bg-gradient-to-r from-indigo-300 to-fuchsia-200 sm:pt-20">
-        <Link href="#" className="absolute top-8 right-8">
+        <Link
+          href="https://github.com/WatsonSantos/mi-repos"
+          target="_blank"
+          className="absolute top-8 right-8"
+        >
           <AiFillGithub className="text-xl" />
         </Link>
         <button
@@ -54,7 +58,7 @@ export default function Repositories({ params }) {
             router.back();
           }}
         >
-          <TbArrowBackUp className="text-3xl text-red-600 transition-all hover:text-red-500"/>
+          <TbArrowBackUp className="text-3xl text-red-600 transition-all hover:text-red-500" />
         </button>
         {isLoading === true ? (
           <Loading />
