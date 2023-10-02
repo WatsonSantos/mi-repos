@@ -36,13 +36,12 @@ export default function Home() {
               className="p-3 w-full md:w-96 mb-5 md:mb-0 md:mr-3 outline-none border-[1px] border-indigo-700 focus:drop-shadow-md text-zinc-700 rounded-sm transition-all focus:placeholder:bottom-8 focus:placeholder:text-xs"
             />
             {user.length > 0 ? (
-              <Link
+              <button
                 className="flex items-center justify-center py-3 md:px-8 w-full md:w-auto outline-none bg-indigo-700 hover:bg-indigo-600 transition-all text-white rounded-sm"
                 onClick={() => getRepo(user)}
-                href={`/repositorios/${user}`}
               >
-                Procurar
-              </Link>
+                <Link href={`/repositorios/${user}`}>Procurar</Link>
+              </button>
             ) : (
               <Link
                 className="flex items-center justify-center py-3 md:px-8 w-full md:w-auto outline-none bg-indigo-700 hover:bg-indigo-600 transition-all text-white rounded-sm"
