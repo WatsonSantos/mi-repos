@@ -28,7 +28,7 @@ export default function Repositories({ params }) {
             Message("Error", "Repositório não encontrado!");
             setIsLoading(false);
           } else {
-            console.log(res);
+            //console.log(res);
             setData(res);
             setIsLoading(false);
             Message("Success", "Repositório encontrado!");
@@ -80,12 +80,12 @@ export default function Repositories({ params }) {
               {data.map((repo) => {
                 return (
                   <li
+                    key={repo.id}
                     className="text-white mr-4 p-8 mb-4 h-36 w-full  md:w-64 text-lg
                   flex flex-col items-center cursor-pointer shadow-md 
                   justify-center transition-all overflow-hidden
                    bg-indigo-700 hover:bg-indigo-600 font-medium
                   hover:shadow-xl hover:shadow-indigo-950 relative"
-                    key={repo.id}
                   >
                     <span className="absolute top-2 right-2">📌</span>
                     {repo.name}
