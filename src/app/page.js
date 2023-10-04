@@ -23,7 +23,11 @@ export default function Home() {
     <>
       <ToastContainer />
       <main className="flex flex-col items-center justify-center h-screen  bg-gradient-to-r from-indigo-300 to-fuchsia-200 sm:pt-20">
-        <Link href="#" className="absolute top-8 right-8">
+        <Link
+          target="_blank"
+          href="https://github.com/WatsonSantos/mi-repos"
+          className="absolute top-8 right-8"
+        >
           <AiFillGithub className="text-xl" />
         </Link>
         <div className="flex flex-col items-center justify-center w-full">
@@ -41,7 +45,9 @@ export default function Home() {
                 className="flex items-center justify-center py-3 md:px-8 w-full md:w-auto outline-none bg-indigo-700 hover:bg-indigo-600 transition-all text-white rounded-sm"
                 onClick={() => getRepo(user)}
               >
-                <Link href={`/repositorios/${user}`}>Procurar</Link>
+                <Link target="_self" href={`/repositorios/${user}`}>
+                  Procurar
+                </Link>
               </button>
             ) : (
               <Link
@@ -55,7 +61,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 }
