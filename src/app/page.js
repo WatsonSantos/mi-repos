@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Message from "@/components/Alert/Message";
+import Footer from "@/components/Footer";
 
 import Link from "next/link";
 
@@ -54,6 +55,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <Footer/>
     </>
   );
 }

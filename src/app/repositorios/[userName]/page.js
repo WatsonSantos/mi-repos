@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Message from "@/components/Alert/Message";
 
 import Loading from "@/app/loading";
+import Footer from "@/components/Footer";
 
 import Link from "next/link";
 
@@ -109,6 +110,14 @@ export default function Repositories({ params }) {
           </div>
         )}
       </main>
+      <Footer/>
     </>
   );
+}
+
+export async function generateMetadata({ params }) {
+  return {
+    title: `${params.userName} repos`,
+    description: `Página de todos os repositórios do utilizador ${params.userName}`,
+  };
 }
