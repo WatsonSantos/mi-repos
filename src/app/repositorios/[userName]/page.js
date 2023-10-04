@@ -110,12 +110,12 @@ export default function Repositories({ params }) {
           </div>
         )}
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 }
 
-export async function generateMetadata({ params }) {
+async function generateMetadata({ params }) {
   return {
     title: `${params.userName} repos`,
     description: `Página de todos os repositórios do utilizador ${params.userName}`,
