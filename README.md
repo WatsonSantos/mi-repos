@@ -10,7 +10,7 @@
  <a href="www.linkedin.com/in/watson-dos-santos-a1b547182/" target="_blank">
       <img alt="Feito por Wason Santos" src="https://img.shields.io/badge/feito%20por-WatsonSantos-%237519C1"></a>
  <a href="https://www.instagram.com/watson_santos1/" target="_blank">
-       <img src="https://img.shields.io/badge/meu-Instagram-%23E4405F"></a> 
+       <img src="https://img.shields.io/badge/meu-Instagram-%23E4405F"></a>
 
 </p>
 
@@ -55,6 +55,14 @@
 
 <br>
 <img alt="banner" src="./public/img/bunner.png" align=center/>
+
+<br>
+
+ <a href="https://vercel.org" target="_blank"> 
+  <img alt="vercel" src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white">
+ </a>
+
+Link para teste: [Mi-repos](https://mi-repos.vercel.app/)
 
 <br>
 
