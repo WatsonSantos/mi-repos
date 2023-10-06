@@ -16,7 +16,7 @@
  <a href="#-executando-a-aplicação">Executando a aplicação</a> • 
  <a href="#-tecnologias">Tecnologias</a> • 
  <a href="#-autor">Autor</a> • 
- <a href="#user-content-licença">Licença</a>
+ <a href="#-licença">Licença</a>
 </p>
 <br>
 <h4 align="center"> 
@@ -25,7 +25,7 @@
 
 ## ⚙️ Funcionalidades
 
-- [x] Pesquisa de do Uitilizador do Github
+- [x] Pesquisa de Uitilizador do Github
 - [x] Listagem dos Repositórios
   - Avatar da conta no GitHub
   - Nome do repositório
@@ -44,7 +44,7 @@
 
 ## 🔗 Pré-requisitos
 
-Antes de começar, você vai precisar ter instalado em sua máquina o [Node.js](https://nodejs.org/en/).
+Antes de começar, você vai precisar ter instalado em sua máquina o [Node.js](https://nodejs.org/).
 <br>
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
