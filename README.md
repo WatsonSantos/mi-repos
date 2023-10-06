@@ -1,3 +1,19 @@
+<br>
+<p align="center">
+ <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/WatsonSantos/mi-repos?color=%2304D361">
+ <img alt="Repository size" src="https://img.shields.io/github/repo-size/WatsonSantos/mi-repos">
+ <a href="https://github.com/WatsonSantos/mi-repos/commits/master" target="_blank" >
+      <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/WatsonSantos/mi-repos"></a>
+ <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+ <a href="https://github.com/WatsonSantos/mi-repos/stargazers" target="_blank">
+      <img alt="Stargazers" src="https://img.shields.io/github/stars/WatsonSantos/mi-repos?style=social"></a>
+ <a href="www.linkedin.com/in/watson-dos-santos-a1b547182/" target="_blank">
+      <img alt="Feito por Wason Santos" src="https://img.shields.io/badge/feito%20por-WatsonSantos-%237519C1"></a>
+ <a href="https://www.instagram.com/watson_santos1/" target="_blank">
+       <img src="https://img.shields.io/badge/meu-Instagram-%23E4405F"></a> 
+
+</p>
+
 <div align=center>
 <img alt="banner" src="./src/app/favicon.ico" align=center/>  
 </div>
@@ -85,7 +101,6 @@ Feito com ❤️ por Watson Santos 👋🏽 Entre em contato!
 
 [![Linkedin Badge](https://img.shields.io/badge/-Watson-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/watson-dos-santos-a1b547182/)](https://www.linkedin.com/in/watson-dos-santos-a1b547182/)
 [![Gmail Badge](https://img.shields.io/badge/-watsontavares72@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:watsontavares72@gmail.com)](mailto:watsontavares72@gmail.com)
-
 
 ## 📝 Licença
 
