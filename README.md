@@ -36,20 +36,28 @@
 </p>
 <br>
 <h4 align="center"> 
-	🚩   Status:  Terminado!🚀   🚩
+	🚩   Status:  Em construção...🚀   🚩
 </h4>
 
 ## ⚙️ Funcionalidades
 
-- [x] Pesquisa de Uitilizador do Github
-- [x] Listagem dos Repositórios
+- ✅ Pesquisa de Uitilizador do Github
+- ✅ Listagem dos Repositórios
   - Avatar da conta no GitHub
   - Nome do repositório
   - Linguagem Utilizada
   - Data de criação
-- [x] Botão de retrcoceder á página inicial
-- [x] Mensagem de sucesso
-- [x] Mensagem de erro
+- ✅ Botão de retrcoceder á página inicial
+- ✅ Mensagem de sucesso
+- ✅ Mensagem de erro
+- ❌ Vizualização de cada repositório em particular
+  - Nome do reposiório
+  - Descrição
+  - Likes
+  - Commits
+  - Ligunagnes
+  - Size
+  - e mais...
 
 ## 📺 Demonstração
 
