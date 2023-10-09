@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Message from "@/components/Alert/Message";
 import Footer from "@/components/Footer";
 
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -31,8 +32,8 @@ export default function Home() {
           <AiFillGithub className="text-xl" />
         </Link>
         <div className="flex flex-col items-center justify-center w-full">
-          <h1 className="text-5xl  text-[#1ED950] mb-12 md:mb-0">𝓜𝓲 𝓡𝓮𝓹𝓸𝓼</h1>
-          <div className="flex flex-col  items-center justify-center md:flex-row h-full w-full p-8 md:p-32">
+          <Image src={"/img/logo.png"} width={400} height={400} alt="logo" className="-mb-24  md:-mb-40"/>
+          <div className="flex flex-col  items-center justify-center md:flex-row h-full w-full p-8 md:p-32 mb-32">
             <input
               value={user || ""}
               onChange={(event) => setUser(event.target.value)}
