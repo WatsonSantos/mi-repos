@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <ToastContainer />
-      <main className="flex flex-col items-center justify-center h-screen  bg-gradient-to-r from-indigo-300 to-fuchsia-200 sm:pt-20">
+      <main className="flex flex-col items-center justify-center  bg-gradient-to-r from-indigo-300 to-fuchsia-200 sm:pt-20 md:pt-0 mb-24 md:mb-20">
         <Link
           target="_blank"
           href="https://github.com/WatsonSantos/mi-repos"
@@ -32,8 +32,14 @@ export default function Home() {
           <AiFillGithub className="text-xl" />
         </Link>
         <div className="flex flex-col items-center justify-center w-full">
-          <Image src={"/img/logo.png"} width={400} height={400} alt="logo" className="-mb-24  md:-mb-40"/>
-          <div className="flex flex-col  items-center justify-center md:flex-row h-full w-full p-8 md:p-32 mb-32">
+          <Image
+            src={"/img/logo.png"}
+            width={400}
+            height={400}
+            alt="logo"
+            className="-mb-24  md:-mb-48"
+          />
+          <div className="flex flex-col  items-center justify-center md:flex-row h-full w-full p-8 md:p-32 ">
             <input
               value={user || ""}
               onChange={(event) => setUser(event.target.value)}

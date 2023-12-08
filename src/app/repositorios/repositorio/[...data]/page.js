@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { TbArrowBackUp } from "react-icons/tb";
-import { ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,22 +13,21 @@ import Footer from "@/components/Footer";
 
 import Link from "next/link";
 
-export default function Repositories({ params }) {
+export default function Repository({ params }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  async function getRepos(username) {
+  async function getRepo(userName, repoName) {
     setIsLoading(true);
-    await fetch(`https://api.github.com/users/${username}/repos`).then(
+    await fetch(`https://api.github.com/repos/${userName}/${repoName}`).then(
       async (data) => {
         await data.json().then((res) => {
-          if (res.message === "Not Found" || res.length === 0) {
+          if (res.length === 0) {
             Message("Error", "Repositório não encontrado!");
-            console.log("Não encontrou", res);
             setIsLoading(false);
           } else {
-            console.log("Encontrou", res);
+            console.log(res);
             setData(res);
             setIsLoading(false);
             Message("Success", "Repositório encontrado!");
@@ -40,11 +38,10 @@ export default function Repositories({ params }) {
   }
 
   useEffect(() => {
-    getRepos(params.userName);
-  }, [params.userName]);
+    getRepo(params.data[0], params.data[1]);
+  }, [params.data]);
   return (
     <>
-      <ToastContainer />
       <main className="flex flex-col items-center justify-center min-h-screen w-full  bg-gradient-to-r from-indigo-300 to-fuchsia-200 sm:pt-20">
         <Link
           href="https://github.com/WatsonSantos/mi-repos"
@@ -59,7 +56,7 @@ export default function Repositories({ params }) {
             router.back();
           }}
         >
-          <TbArrowBackUp className="text-3xl text-white" />
+          <TbArrowBackUp className="text-3xl text-red-600 transition-all hover:text-red-500" />
         </button>
         {isLoading === true ? (
           <Loading />
@@ -75,37 +72,18 @@ export default function Repositories({ params }) {
               />
             </div>
             <small className="text-zinc-700 mt-3 text-lg">
-              {data[0].owner.login} 🚀
+              {params.data[0]} 🚀
             </small>
             <ul className="flex flex-wrap items-center justify-center p-8 sm:p-12 lg:p-16 w-full h-full ">
-              {data.map((repo) => {
-                return (
-                  <li
-                    key={repo.id}
-                    className="text-white mr-4 p-8 mb-4 h-36 w-full  md:w-64 text-lg
-                  flex flex-col items-center cursor-pointer shadow-md 
-                  justify-center transition-all overflow-hidden
-                   bg-indigo-700 hover:bg-indigo-600 font-medium
-                  hover:shadow-xl hover:shadow-indigo-950 relative"
-                  >
-                    <span className="absolute top-2 right-2">📌</span>
-                    {repo.name}
-                    <span className="ml-auto text-[10px] text-zinc-300 absolute right-2 bottom-2">
-                      {repo.language}
-                    </span>
-                    <span className="ml-auto text-[10px] text-zinc-300 absolute left-2 bottom-2">
-                      {repo.updated_at.slice(0, 10)}
-                    </span>
-                  </li>
-                );
-              })}
+              <pre>{params.data[0]}</pre>
             </ul>
           </>
         ) : (
           <div className="flex flex-col items-center justify-center">
+            <p className="text-red-600">{data[0] && data[0].length}</p>
             <span className="text-7xl mb-4">😔</span>
             <h1 className="font-bold text-3xl mb-5 mt-4 text-gray-700 text-center">
-              Utilizador não encontrado!
+              Repositório não encontrado!
             </h1>
           </div>
         )}
